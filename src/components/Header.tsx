@@ -1,37 +1,47 @@
-import { Search, BookOpen, User } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Icon from "@/components/ui/icon";
 
 const Header = () => {
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <BookOpen className="h-8 w-8 text-blue-800" />
-            <h1 className="text-xl font-bold text-gray-900">BookSpace</h1>
-          </div>
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="flex items-center space-x-2">
+            <Icon name="BookOpen" size={24} className="text-orange-500" />
+            <span className="text-xl font-bold text-gray-900">БиблиоТека</span>
+          </Link>
 
-          {/* Search */}
-          <div className="flex-1 max-w-lg mx-8">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-              <Input
-                placeholder="Поиск книг по названию или автору..."
-                className="pl-10 bg-gray-50 border-gray-200"
-              />
-            </div>
-          </div>
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              to="/"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Каталог
+            </Link>
+            <Link
+              to="/library-card"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Читательский билет
+            </Link>
+            <Link
+              to="/profile"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Личный кабинет
+            </Link>
+          </nav>
 
-          {/* User Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <Button variant="outline" size="sm">
-              <User className="h-4 w-4 mr-2" />
-              Вход
+              <Icon name="Search" size={16} className="mr-2" />
+              Поиск
             </Button>
-            <Button size="sm" className="bg-blue-800 hover:bg-blue-900">
-              Мои бронирования
+            <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
+              <Icon name="User" size={16} className="mr-2" />
+              Войти
             </Button>
           </div>
         </div>

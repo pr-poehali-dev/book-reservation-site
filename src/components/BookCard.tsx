@@ -1,6 +1,7 @@
-import { Calendar, Clock, Star } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import Icon from "@/components/ui/icon";
 
 interface BookCardProps {
   id: string;
@@ -26,27 +27,16 @@ const BookCard = ({
   onBook,
 }: BookCardProps) => {
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <CardHeader className="p-0">
-        <div className="relative overflow-hidden rounded-t-lg">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Link to={`/book/${id}`}>
+        <div className="aspect-[3/4] overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
-          <div className="absolute top-2 right-2">
-            <span
-              className={`px-2 py-1 rounded-full text-xs font-medium ${
-                available
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }`}
-            >
-              {available ? "Доступна" : "Забронирована"}
-            </span>
-          </div>
         </div>
-      </CardHeader>
+      </Link>
 
       <CardContent className="p-4">
         <div className="space-y-3">
